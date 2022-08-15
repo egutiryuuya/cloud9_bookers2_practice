@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2Practice</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+ <body>
+ <header class="navbar navbar navbar-dark bg-dark navbar-inverse">
+      <div class="container">
+      <nav class='nav navbar-nav navbar-left' >
+        <h3><a class="navbar-brand p-3" href = "/" >Bookers</a></h3>
+      </nav>
+      <ul class="d-flex flex-row navbar-nav ml-auto">
+        <% if user_signed_in? %>
+         <li class="nav-item m-3 ">
+           <%= link_to user_path(current_user) do %>
+          <i class="fas fa-home text-light"></i><span class="text-white">Home<span>
+          <% end %>
+         </li>
+         <li class="nav-item m-3">
+           <%= link_to users_path do %>
+          <i class="fas fa-users text-light"></i><spam class="text-white">Users</span>
+          <% end %>
+         </li>
+         <li class="nav-item m-3">
+           <%= link_to books_path do %>
+           <i class="fas fa-book-open text-light"></i><span class="text-white">Books</span>
+           <% end %>
+         </li>
+          <li class="nav-item m-3">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+             <i class = "fas fa-sign-out-alt text-light"></i><span class="text-white">Log out</span>
+             <% end %>
+          </li>
+
+
+        <% else %>
+          <li class="nav-item m-3">
+            <%= link_to root_path do %>
+          <i class="fas fa-home text-light"></i><span class="text-white">Home</span>
+          <% end %>
+         </li>
+          <li class="nav-item m-3">
+            <%= link_to about_path do %>
+            <i class="fas fa-link text-light"></i><span class="text-white">About</span>
+            <% end %>
+          </li>
+          <li class="nav-item m-3">
+            <%= link_to new_user_registration_path do %>
+            <i class="fas fa-user-plus text-light"></i><span class="text-white">Sign up</span>
+            <% end %>
+          </li>
+          <li class="nav-item m-3">
+            <%= link_to new_user_session_path do %>
+            <i class="fas fa-sign-in-alt text-light"></i><span class="text-white">Log in</span>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+  </div>
+</header>
+
+  <main class="mb-auto">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </main>
+    <footer class="mx-auto" style="width: 200px;">
+      <p>CopyRight Infratop.inc</p>
+    </footer>
+  </body>
+</html>
