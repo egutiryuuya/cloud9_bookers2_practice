@@ -1,12 +1,16 @@
+<% if @book_new.errors.any? %>
+<%= @book_new.errors.count %>件のエラーが発生しました<br>
+<% @book_new.errors.full_messages.each do |message| %>
+<%= message %>
+<% end %>
+<% end %>
 <div class="container">
     <div class="row">
         <div class="col-md-3 ">
             
           <%= render "users/info", user: @user %>
-          <%= render "new" %>
+          <%= render "new",book: @book %>
           
-            
-            部分テンプレート
         </div>
         <div class="col-md-8 offset-md-1">
           <h1>Book detail</h1>
@@ -26,7 +30,7 @@
               <td><%= @book.body %></td>
               <% if @book.user ==current_user %>
                 <td ><%= link_to "Edit",edit_book_path(@book),class:"btn btn-success"%></td>
-                <td class ="btn btb-danger"><%=link_to "削除",book_path(@book),class:"btn btn-danger",method: :delete,data: { confirm: "本当に消しますか？" } %></td>
+                <td class ="btn btb-danger"><%=link_to "Destroy",book_path(@book),class:"btn btn-danger",method: :delete,data: { confirm: "本当に消しますか？" } %></td>
               <% end %>
             </tr>
           </table>

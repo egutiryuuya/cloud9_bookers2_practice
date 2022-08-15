@@ -10,7 +10,7 @@
     <td><%= user.introduction %></td>
   </tr>
 </table>
-
-<%=link_to edit_user_path(current_user),class:"btn btn-outline-secondary btn-block" do %>
-<i class="fas fa-user-cog"></i>
+  <%=link_to edit_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-user-cog"></i>
 <% end %>
+
