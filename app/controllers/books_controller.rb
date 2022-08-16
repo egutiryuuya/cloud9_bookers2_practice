@@ -54,6 +54,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @book_new = Book.new
+    @postcomment = Postcomment.new
+    @comments = Postcomment.all
   end
   
   def book_params

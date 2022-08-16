@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :books,dependent: :destroy
+  has_many :postcomments,dependent: :destroy
   
   validates :name, presence: :true ,
                    uniqueness:true,
