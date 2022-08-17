@@ -6,6 +6,7 @@ class User < ApplicationRecord
          
   has_many :books,dependent: :destroy
   has_many :postcomments,dependent: :destroy
+  has_many :favorites,dependent: :destroy
   
   validates :name, presence: :true ,
                    uniqueness:true,
@@ -21,4 +22,6 @@ class User < ApplicationRecord
     end
   profile_image.variant(resize_to_limit: [100,100]).processed
   end
+  
+  
 end
