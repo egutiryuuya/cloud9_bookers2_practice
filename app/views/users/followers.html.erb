@@ -1,0 +1,7 @@
+<h1>followers</h1>
+<% if @user.followers.count ==0 %>
+  <h1>フォロワーはいません</h1>
+<% else %>
+  <%= render "follow", users: @users%>
+<% end %>
+  

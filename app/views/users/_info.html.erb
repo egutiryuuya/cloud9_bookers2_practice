@@ -9,8 +9,35 @@
     <td>introduction</td>
     <td><%= user.introduction %></td>
   </tr>
+  <tr>
+    <td>following</td>
+    <td><%=link_to followings_user_path(user.id) do %>
+        <%=user.followings.count %>
+        <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>follower</td>
+    <td><%= link_to followers_user_path(user.id) do %>
+        <%= user.followers.count %>
+        <% end %>
+    </td>
+  </tr>
+  
 </table>
-  <%=link_to edit_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
-  <i class="fas fa-user-cog"></i>
+<% if user ==current_user %>
+<% else %>
+  <% if user.is_followed_by?(current_user) %>
+     <%=link_to user_relationships_path(user),method: :delete do %>
+    <button class ="btn btn-danger mb-5">フォロー解除する</button>
+  <% end %>
+  <%else %>
+    <%= link_to user_relationships_path(user),method: :post do %>
+    <button class ="btn btn-success mb-5">フォローする</button>
+    <% end %>
+  <% end %>
+    <%=link_to edit_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
 <% end %>
 
