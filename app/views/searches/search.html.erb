@@ -1,0 +1,38 @@
+<h2><%=@range %> search results</h2>
+<table class ="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時-->
+  <% if @range == "User" %>
+  <thead>
+    <td></td>
+    <td>name</td>
+    <td>introduction</td>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%=image_tag user.get_profile_image %></td>
+      <td><%=user.name %></td>
+      <td><%=user.introduction %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<% else %>
+<thead>
+    <td></td>
+    <td>Title</td>
+    <td>Opinion</td>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+    <tr>
+      <td><%=image_tag book.user.get_profile_image %></td>
+      <td><%=book.title %></td>
+      <td><%=book.body %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+<% end %>
+  
