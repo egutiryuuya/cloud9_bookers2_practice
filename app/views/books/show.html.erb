@@ -32,16 +32,8 @@
                 <td ><%= link_to "Edit",edit_book_path(@book),class:"btn btn-success"%></td>
                 <td class ="btn btb-danger"><%=link_to "Destroy",book_path(@book),class:"btn btn-danger",method: :delete,data: { confirm: "本当に消しますか？" } %></td>
               <% end %>
-              <td>
-              <% if @book.favorited_by?(current_user)%>
-              <%=link_to book_favorites_path(@book),method: :delete do %>
-              <i class="fas fa-solid fa-heart" style="color: red;"></i><%=@book.favorites.count %>
-              <% end %>
-              <% else %>
-              <%= link_to book_favorites_path(@book),method: :post do %>
-              <i class="fas fa-light fa-heart"></i><%=@book.favorites.count %>
-              <% end %>
-              <% end %>
+              <td id ="book_<%=@book.id %>">
+                <%= render "favorites/favorites",book: @book %>
               </td>
               <td>コメント数:<%=@book.postcomments.count %></td>
             </tr>

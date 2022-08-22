@@ -62,3 +62,4 @@ gem 'devise'
 gem 'pry-byebug', group: :development
 gem 'net-smtp'
 gem 'ransack'
+gem 'jquery-rails'
